@@ -6,9 +6,9 @@ setup(
     name='simpleSQLiteDB',
     version=__version__,
     license='MIT',
-    description='''> It is a python module to simplify the usage of SQLite3 and more begginer friendly for those starting off with SQL in python
-> It does the task of creating connections, cursors etc, to enable clean code
-> It makes the whole process more modular to allow for ease of use for more than 1 database''',
+    description='''simpleSQLiteDB is a python module to simplify the usage of SQLite3 and more begginer friendly for those starting off with SQL in python
+. It does the task of creating connections, cursors etc, to enable clean code
+. It makes the whole process more modular to allow for ease of use for more than 1 database''',
 
     url='https://github.com/KingHacker9000/simpleDB',
     author='Ashish Ajin Thomas',
