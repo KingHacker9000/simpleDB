@@ -1,2 +1,3 @@
-simpleDB.egg-info/*
+simpleSQLiteDB.egg-info/*
 __pycache__/*
+dist/*

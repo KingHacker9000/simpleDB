@@ -3,7 +3,7 @@ from setuptools import setup
 from simpleDB import __version__
 
 setup(
-    name='simpleDB',
+    name='simpleSQLiteDB',
     version=__version__,
 
     url='https://github.com/KingHacker9000/simpleDB',
