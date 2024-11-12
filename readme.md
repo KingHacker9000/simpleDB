@@ -1,92 +1,112 @@
-# Simple SQLite Database (Module)
+# 📂 Simple SQLite Database (Python Module)
 
-#### Author: Ashish Ajin Thomas
+**Author:** Ashish Ajin Thomas
 
-## What is this?
-> It is a python module to simplify the usage of SQLite3 and more begginer friendly for those starting off with SQL in python
-> It does the task of creating connections, cursors etc, to enable clean code
-> It makes the whole process more modular to allow for ease of use for more than 1 database
+---
 
-## Getting Started
-> run `pip install simpleSQLiteDB==1.0.0`
-> then add `from simpleDB import Database` to your python file
-> Now you can instantiate from the Database class and create databases
+## 🚀 Overview
 
-## Documentation
+**Simple SQLite Database** is a beginner-friendly Python module for SQLite, designed to make database interactions effortless. It provides a clean, modular interface for connecting, managing, and querying SQLite databases – no need to manually create connections or cursors! With this library, you can dive right into using SQL in Python. Perfect for handling multiple databases with ease. 
 
-### First Steps
-Add this to file
+---
+
+## 📥 Installation
+
+Get started by installing the module with pip:
+
+```bash
+pip install simpleSQLiteDB==1.0.0
 ```
-# import module
+
+Then, add it to your Python project:
+
+```python
+from simpleDB import Database
+```
+
+---
+
+## 🛠️ Usage
+
+### 1️⃣ Creating & Connecting to a Database
+
+To create or connect to an existing database, initialize the `Database` class with a filename:
+
+```python
+# Import the module
 from simpleDB import Database
 
-# connect/create the database called 'Database.db' at './'
-db = Database('Database.db')
-
-# Execute a command to Create a new Table called foo with 2 columns: bar and baz of type INTEGER and TEXT respectively
-a = db.execute("CREATE TABLE foo (bar INT, baz TEXT);")
-print(a)
-# a will be a tuple containing return value and status of the command
-
-# Execute a command to INSERT a Row into the table with values 1 and "First Row" as the values for bar and baz columns respectively
-b = db.execute("INSERT INTO foo (bar, baz) VALUES (?, ?);", (1, "First Row"))
-print(b)
-# b will be a tuple containing return value and status of the command
-
-```
-Run the CREATE TABLE command only once as running it multiple times will bring about an error
-
-now you can remove the a and b parts of the file as the commands have already been executed
-
-Your File should not look like this
-```
-# import module
-from simpleDB import Database
-
-# connect/create the database called 'Database.db' at './'
+# Connect to (or create) a database file called 'Database.db'
 db = Database('Database.db')
 ```
 
-To SELECT All the Values from the Table we can run
-~~~
+### 2️⃣ Executing SQL Commands
+
+Use the `execute` method to run SQL commands. It returns a tuple containing the command’s result and status.
+
+#### 🏗️ Creating a Table
+
+Define your table structure with `CREATE TABLE`. Here’s an example:
+
+```python
+# Create a table called 'foo' with columns 'bar' (INTEGER) and 'baz' (TEXT)
+result, status = db.execute("CREATE TABLE foo (bar INTEGER, baz TEXT);")
+print(result, status)
+```
+
+⚠️ **Tip**: Run `CREATE TABLE` only once per table, as running it multiple times will raise an error.
+
+#### 📥 Inserting Data
+
+Add a row to your table with the `INSERT INTO` command:
+
+```python
+# Insert a row with values (1, "First Row") for 'bar' and 'baz'
+result, status = db.execute("INSERT INTO foo (bar, baz) VALUES (?, ?);", (1, "First Row"))
+print(result, status)
+```
+
+#### 🔍 Retrieving Data
+
+Get all rows from a table with a `SELECT` statement:
+
+```python
+# Select all rows from 'foo'
 rows, status = db.execute("SELECT * FROM foo;")
-print(rows, status)
-# rows will have all the rows
-~~~
+print(rows, status)  # 'rows' will contain a list of dictionaries (one for each row)
+```
 
-Using these you can run any SQLite3 Command with a single statement 
+Here, each row is a dictionary, where column names are keys, and values are the data.
 
-### Database
+---
 
-The Database class can be instantiated using Database(filename)
-The filename argument refers to the database file in the same directory
+## 📜 Class & Method Reference
 
-### Database.execute
+### 🔹 Database Class
 
-The Database.execute(command, [*args]) function takes in a command and an optional *args argument
-the *args has to be a tuple
-if there is only 1 argument inside the tuple
-make sure the tuple is like this
-~~~
-(variable,)
-~~~
-and not like (variable)
+- **Constructor**: `Database(filename)`
+  - **filename**: Specifies the database file name to connect or create in the current directory.
 
-The execute method will execute the command to the Database that the file was connected to at the instantiation
+### 🔹 `Database.execute` Method
 
-#### SELECT statements
+- **Syntax**: `execute(command, [*args])`
+  - **command**: The SQL command you want to run.
+  - **args** (optional): Parameters for the command. If you have only one argument in a tuple, write it as `(variable,)`.
 
-The SELECT statements will return the Values as a list of dictionaries in which each dictionary has the column name as the key and the value as the value for that row and column
-Note: the command will return a None if no rows are found
+The `execute` method performs any SQL command on the connected database. For `SELECT` statements, it returns the results as a list of dictionaries.
 
-#### .schema;
+#### 🔧 Special Commands
 
-~~~Database.execute(".schema;")~~~
-will return a list of all the Tables in the Database along with their SQL
+- **`.schema;`**: Returns a list of all tables and their SQL schema definitions in the database.
 
+---
 
-## Running the simpleDB.py File
+## 🔄 Running `simpleDB.py` Directly
 
-Can directly Manipulate the Database by running SQLite commands without using python
+You can also interact with the database directly by running `simpleDB.py` from the command line and executing SQLite commands without using Python.
 
-## Thank You
+---
+
+## ❤️ Acknowledgements & Thank You
+
+Thank you for choosing Simple SQLite Database! Happy coding! 🎉
