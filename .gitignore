@@ -1,4 +1,5 @@
-simpleSQLiteDB.egg-info/*
-__pycache__/*
-dist/*
+simpleSQLiteDB.egg-info/
+__pycache__/
+dist/
 .vscode/*
+virtualenv/

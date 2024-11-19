@@ -1,7 +1,7 @@
 # Import SQLITE Module
 import sqlite3
 
-__version__ = '1.0.5'
+__version__ = '1.1.0'
 
 class Database:
 
@@ -83,10 +83,9 @@ class Database:
                 
                 c = self.conn.cursor()
                 c.execute(command, *args)
-                self.conn.commit()
-
                 # Fetch All the Rows
                 rows = c.fetchall()
+                self.conn.commit()
 
                 # Append the rows to return Value as dict
                 for row in rows:
