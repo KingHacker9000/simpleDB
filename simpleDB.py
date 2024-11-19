@@ -1,7 +1,7 @@
 # Import SQLITE Module
 import sqlite3
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 class Database:
 
