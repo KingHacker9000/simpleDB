@@ -76,6 +76,24 @@ class Database:
 
                 # Return the return value if it has atleast 1 element and the status
                 return (rV if len(rV) != 0 else None), "Output Returned"
+
+            elif "RETURNING" in command.upper():
+                # return Value initialization
+                rV = []
+                
+                c = self.conn.cursor()
+                c.execute(command, *args)
+                self.conn.commit()
+
+                # Fetch All the Rows
+                rows = c.fetchall()
+
+                # Append the rows to return Value as dict
+                for row in rows:
+                    rV.append(dict(row))
+
+                # Return the return value if it has at least 1 element and the status
+                return (rV if len(rV) != 0 else None), "Command Executed"
             
             else:
                 c = self.conn.cursor()
